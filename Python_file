@@ -1,0 +1,50 @@
+import RPi.GPIO as GPIO
+from flask import Flask,render_template,request
+app = Flask(__name__)
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+LedRed   = 16
+LedGreen = 20
+LedBlue  = 21
+LedRedStatus   = 0
+LedGreenStatus = 0
+LedBludeStatus = 0
+GPIO.setup(LedRed,   GPIO.OUT)
+GPIO.setup(LedGreen, GPIO.OUT)
+GPIO.setup(LedBlue,  GPIO.OUT)
+GPIO.output(LedRed,   GPIO.LOW)
+GPIO.output(LedGreen, GPIO.LOW)
+GPIO.output(LedBlue,  GPIO.LOW)
+
+@app.route('/')
+def index():
+    LedRedStatus   = GPIO.input(LedRed)
+    LedGreenStatus = GPIO.input(LedGreen)
+    LedBlueStatus = GPIO.input(LedBlue)
+    templateData   = {'LedRed':LedRedStatus,'LedGreen':LedGreenStatus,'LedBlue':LedBlueStatus}
+    return render_template('index.html',**templateData)
+
+@app.route('/<DeviceName>/<Action>')
+def do(DeviceName,Action):
+    if DeviceName == "LedRed":
+        Actuator = LedRed
+    if DeviceName == "LedGreen":
+        Actuator = LedGreen
+    if DeviceName == "LedBlue":
+        Actuator = LedBlue
+    if Action == "on":
+        GPIO.output(Actuator, GPIO.HIGH)
+    if Action == "off":
+        GPIO.output(Actuator, GPIO.LOW)
+        
+    LedRedStatus   = GPIO.input(LedRed)
+    LedGreenStatus = GPIO.input(LedGreen)
+    LedBlueStatus  = GPIO.input(LedBlue)
+    templateData   = {'LedRed':LedRedStatus,'LedGreen':LedGreenStatus,'LedBlue':LedBlueStatus}
+    return render_template('index.html',**templateData)
+           
+if __name__ == "__main__":
+    app.run(host='0.0.0.0',debug=True)
+
+# URL: ip Raspberry:5000/

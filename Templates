@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head><title>GPIO Control Web Application</title> 
+</head>
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+h3 {text-align: center;
+	padding:12px 10px;
+	background-color:#03A9F4;
+	color:#030303;}
+	
+.button-Red{
+	text-decoration:none;
+	font-family: Arial;
+	font-size:12px;
+	padding:12px 12px;
+	background-color:#55FF33;
+	color:#000000;
+}
+.button-Green{
+	text-decoration:none;
+	font-family: Arial;
+	font-size:12px;
+	padding:12px 12px;
+	background-color:#F60720; 
+	color:#000000;
+}
+</style>
+<body>  
+<h1>Raspberry Pi Web Server</h1>
+<h2>Super Admin: Đức Chung</h2>
+<br>
+<center><img src = "/static/RaspberryPi_Logo.png" width="270px" height="100px"/></center>
+	<h2>LED Status</h2> 
+		<h3> Red LED: {{LedRed}}</h3>
+		<h3> Blue LED:{{LedBlue}}</h3> 
+		<h3> GreenLED:{{LedGreen}}</h3><br>
+	<h2>Led Control</h2> 
+	<h3> Red LED Control: <a href ="/LedRed/on" class="button-Red">TURN ON</a> 
+						  <a href="/LedRed/off" class = "button-Green">TURN OFF</a></h3> 
+	<h3> Blue LED Control: <a href="/LedBlue/on" class="button-Red">TURN ON</a> 
+						   <a href="/LedBlue/off" class="button-Green">TURN OFF</a></h3> 
+	<h3> Green LED Control: <a href="/LedGreen/on" class="button-Red">TURN ON</a>
+ 			                <a href="/LedGreen/off" class="button-Green">TURN OFF</a></h3>
+</body>
+</html>

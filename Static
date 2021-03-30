@@ -1,0 +1,24 @@
+buttonRed{
+	background-color:#03A9F4;
+	color:#ffffff;
+}
+.buttonGreen{
+	background-color:#03A9F4;
+	color:#ffffff; 
+}
+.buttonRed1{
+	background-color:#03A9F4;
+	color:#ffffff; 
+}
+.buttonGreen1{
+	background-color:#03A9F4;
+	color:#ffffff; 
+}
+.buttonRed2{
+	background-color:#03A9F4;
+	color:#ffffff; 
+}
+.buttonGreen2{
+	background-color:#03A9F4;
+	color:#ffffff; 
+}
